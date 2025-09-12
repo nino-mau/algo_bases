@@ -1,0 +1,12 @@
+[tool.pytest.ini_options]
+pythonpath = [
+  "."
+]
+testpaths = [
+  "ex01_variables_conditions/tests",
+  "ex02_boucles_listes/tests",
+  "ex03_fonctions_algo/tests",
+  "ex04_tri/tests",
+  "ex05_arbre_parcours/tests"
+]
+addopts = "-q"
