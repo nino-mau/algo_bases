@@ -22,7 +22,7 @@ def count_substring(param: str, sub: str) -> int:
     raise NotImplementedError
 
 
-def list_length(param: list[int]) -> int:
+def list_length(param: list[any]) -> int:
     # Une fonction qui retourne le nombre d'éléments dans une liste d'entiers.
     raise NotImplementedError
 

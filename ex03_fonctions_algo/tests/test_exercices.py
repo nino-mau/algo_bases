@@ -1,11 +1,10 @@
 from ex03_fonctions_algo.src.exercices import (
-print_hello_world,
-reverse_string,
-to_uppercase,
-count_substring,
-list_length,
-max_in_list,
-
+    print_hello_world,
+    reverse_string,
+    to_uppercase,
+    count_substring,
+    list_length,
+    max_in_list,
     pgcd,
     fibonacci,
     crible_eratosthene,
@@ -17,6 +16,7 @@ max_in_list,
     is_palindrome_recursive,
     factorial_recursive
 )
+
 
 def test_print_hello_world():
     assert print_hello_world() == "Hello, World!"
