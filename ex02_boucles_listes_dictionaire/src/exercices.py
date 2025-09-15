@@ -31,8 +31,8 @@ def compter_negatifs(nums: list[int]) -> int:
     raise NotImplementedError
 
 
-def compter_mots(items: list[str], mot: str) -> int:
-    # TODO: Implémentez une fonction pour compter le nombre d'occurrences de `mot` dans une liste de chaînes de caractères.
+def compter_mots(phrase: str) -> int:
+    # TODO: Implémentez une fonction pour compter le nombre de mots dans une chaîne de caractères donnée.
     raise NotImplementedError
 
 
@@ -41,23 +41,23 @@ def trouver_plus_long(items: list[str]) -> str:
     raise NotImplementedError
 
 
-def convertir_majuscule(items: list[str]) -> list[str]:
+def convertir_majuscule(items: str) -> str:
     # TODO: Implémentez une fonction pour convertir toutes les chaînes de la liste en majuscules.
     raise NotImplementedError
 
 
-def compter_mots_commencant_par(items: list[str], lettre: str) -> int:
+def compter_mots_commencant_par(items: str, lettre: str) -> int:
     # TODO: Implémentez une fonction pour compter les mots commençant par une lettre donnée.
     raise NotImplementedError
 
 
-def trouver_mot_finissant_par(items: list[str], suffixe: str) -> list[str]:
+def trouver_mot_finissant_par(items: str, suffixe: str) -> list[str]:
     # TODO: Implémentez une fonction pour trouver tous les mots qui se terminent par un suffixe donné dans la liste.
     raise NotImplementedError
 
 
-def compter_caracteres(s: str) -> int:
-    # TODO: Implémentez une fonction pour compter et retourner le nombre total de caractères dans la chaîne.
+def compter_caracteres(s: str, char: str) -> int:
+    # TODO: Implémentez une fonction pour compter le nombre d'occurences du caractère char et retourner le nombre total.
     raise NotImplementedError
 
 

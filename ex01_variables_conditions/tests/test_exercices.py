@@ -48,7 +48,7 @@ def test_calcul_reduction_simples():
 def test_calcul_reduction_bornes():
     assert calcul_reduction(0.0, 10.0) == 0.0
     assert calcul_reduction(100.0, 200.0) == 0.0  # pas négatif
-    with pytest.raises((TypeError, ValueError)):
+    with pytest.raises(ValueError):
         calcul_reduction(-1.0, 10.0)
 
 
