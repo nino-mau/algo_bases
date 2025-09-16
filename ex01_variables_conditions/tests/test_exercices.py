@@ -10,7 +10,7 @@ from ex01_variables_conditions.src.exercices import (
     racine_carree,
     maximum_trois,
     factorielle,
-    convertir_en_binaire
+    convertir_en_binaire,
 )
 
 
@@ -33,10 +33,10 @@ def test_est_pair():
 
 
 def test_est_voyelle():
-    assert est_voyelle('a') is True
-    assert est_voyelle('b') is False
-    assert est_voyelle('E') is True
-    assert est_voyelle('z') is False
+    assert est_voyelle("a") is True
+    assert est_voyelle("b") is False
+    assert est_voyelle("E") is True
+    assert est_voyelle("z") is False
 
 
 def test_calcul_reduction_simples():
@@ -82,6 +82,6 @@ def test_factorielle():
 
 
 def test_convertir_en_binaire():
-    assert convertir_en_binaire(5) == '101'
-    assert convertir_en_binaire(0) == '0'
-    assert convertir_en_binaire(10) == '1010'
+    assert convertir_en_binaire(5) == "101"
+    assert convertir_en_binaire(0) == "0"
+    assert convertir_en_binaire(10) == "1010"

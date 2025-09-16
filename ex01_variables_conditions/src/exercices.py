@@ -1,32 +1,42 @@
 from __future__ import annotations
+import math
 
 
 def somme(a: int, b: int) -> int:
-    """Retourne la somme de deux entiers."""
-    # TODO
-    raise NotImplementedError
+    return a + b
 
 
 def produit(a: int, b: int) -> int:
-    """Retourne le produit de deux entiers."""
-    # TODO
-    raise NotImplementedError
+    return a * b
 
 
 def est_pair(n: int) -> bool:
-    """Vrai si le nombre est pair."""
-    # TODO
-    raise NotImplementedError
+    if n % 2 == 0:
+        return bool(1)
+    else:
+        return bool(0)
+
 
 def est_voyelle(lettre: str) -> bool:
     """Vrai si la lettre est une voyelle."""
-    # TODO
-    raise NotImplementedError
+    vowels = ["a", "e", "i", "o", "u"]
+
+    for v in vowels:
+        if lettre == v:
+            return bool(1)
+        elif lettre == v.upper():
+            return bool(1)
+
+    return bool(0)
+
 
 def calcul_reduction(prix: float, taux: float) -> float:
-    """Retourne le prix après remise (taux en pourcentage)."""
-    # TODO
-    raise NotImplementedError
+    remise = (prix / 100) * taux
+    if prix < 0:
+        raise ValueError
+    if (prix - remise) <= 0:
+        return 0
+    return prix - remise
 
 
 def est_bissextile(annee: int) -> bool:
@@ -38,17 +48,37 @@ def est_bissextile(annee: int) -> bool:
         - 1900 n'est pas bissextile (divisible par 100 mais pas par 400).
         - 2004 est bissextile (divisible par 4 mais pas par 100).
     """
-    raise NotImplementedError
+    if annee % 4 == 0:
+        if annee % 100 == 0:
+            if annee % 400 == 0:
+                return True
+            else:
+                return False
+        else:
+            return True
+    else:
+        return False
+
 
 def racine_carree(x: float) -> float:
     """Retourne la racine carrée d'un nombre."""
+    return math.sqrt(x)
     # TODO
     raise NotImplementedError
+
 
 def maximum_trois(a: int, b: int, c: int) -> int:
     """Renvoie le maximum de trois valeurs sans utiliser max()."""
     # TODO
-    raise NotImplementedError
+    max = 0
+    if (a > b) and (a > c):
+        max = a
+    elif (b > a) and (b > c):
+        max = b
+    elif (c > a) and (c > b):
+        max = c
+    return max
+
 
 def factorielle(n: int) -> int:
     """Retourne la factorielle d'un entier.
@@ -59,11 +89,14 @@ def factorielle(n: int) -> int:
        - Multiplier le résultat actuel par i.
     4. Retourner le résultat.
     """
-    # TODO
-    raise NotImplementedError
+    if n < 0:
+        raise ValueError
+    res = 1
+    for i in range(1, n + 1):
+        res *= i
+    return res
+
 
 def convertir_en_binaire(n: int) -> str:
     """Convertit un entier en représentation binaire."""
-    # TODO
-    raise NotImplementedError
-
+    return bin(n)[2:]
