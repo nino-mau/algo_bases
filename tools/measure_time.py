@@ -1,5 +1,25 @@
 import time
 from typing import Any, Callable, Tuple
+from ex03_fonctions_algo.src.exercices import (
+    print_hello_world,
+    reverse_string,
+    to_uppercase,
+    count_substring,
+    list_length,
+    max_in_list,
+    pgcd,
+    fibonacci,
+    crible_eratosthene,
+    is_prime,
+    is_palindrome,
+    binary_search,
+    gcd_recursive,
+    fibonacci_recursive,
+    is_palindrome_recursive,
+    is_prime_recursive,
+    factorial_recursive,
+)
+
 
 def measure_time(func: Callable, *args, **kwargs) -> Tuple[Any, float]:
     """
@@ -19,4 +39,19 @@ def measure_time(func: Callable, *args, **kwargs) -> Tuple[Any, float]:
     result = func(*args, **kwargs)
     end = time.perf_counter()
     elapsed = end - start
+    print(result, elapsed)
     return result, elapsed
+
+
+print("fibonacci_recursive:")
+measure_time(fibonacci_recursive, 10)
+print()
+print("fibonacci:")
+measure_time(fibonacci, 10)
+print()
+print("is_prime_recursive:")
+measure_time(is_prime_recursive, 10)
+print()
+print("is_prime:")
+measure_time(is_prime, 10)
+print("")
