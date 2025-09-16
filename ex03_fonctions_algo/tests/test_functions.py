@@ -14,7 +14,8 @@ from ex03_fonctions_algo.src.exercices import (
     gcd_recursive,
     fibonacci_recursive,
     is_palindrome_recursive,
-    factorial_recursive
+    is_prime_recursive,
+    factorial_recursive,
 )
 
 
@@ -100,6 +101,13 @@ def test_fibonacci_recursive():
     assert fibonacci_recursive(0) == 0
     assert fibonacci_recursive(1) == 1
     assert fibonacci_recursive(10) == 55
+
+
+def test_is_prime_recursive():
+    assert is_prime_recursive(1) == False
+    assert is_prime_recursive(2) == True
+    assert is_prime_recursive(17) == True
+    assert is_prime_recursive(18) == False
 
 
 def test_is_palindrome_recursive():
