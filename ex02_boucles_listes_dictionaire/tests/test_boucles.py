@@ -32,7 +32,7 @@ from ex02_boucles_listes_dictionaire.src.exercices import (
     trouver_cle_par_valeur,
     verifier_cle_existe,
     valeurs_uniques,
-    mettre_a_jour_valeur
+    mettre_a_jour_valeur,
 )
 
 
