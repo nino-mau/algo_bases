@@ -14,4 +14,4 @@ arbre_complet = Node(
     "A", Node("B", Node("D"), Node("E")), Node("C", Node("F"), Node("G"))
 )
 
-print(parcours_prefixe(arbre_vide))
+print(parcours_bfs(arbre_complet))

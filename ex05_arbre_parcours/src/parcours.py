@@ -15,7 +15,21 @@ def parcours_prefixe(racine: Optional[Node]) -> List[object]:
     - Combine les résultats et retourne la liste complète.
     """
 
-    raise NotImplementedError
+    res = []
+    currentNode = racine
+
+    if currentNode is None:
+        return []
+
+    res.append(currentNode.value)
+
+    left = parcours_prefixe(currentNode.left)
+    right = parcours_prefixe(currentNode.right)
+
+    print(left)
+    print(right)
+
+    return [*res, *left, *right]
 
 
 def parcours_infixe(racine: Optional[Node]) -> List[object]:
@@ -27,7 +41,29 @@ def parcours_infixe(racine: Optional[Node]) -> List[object]:
     - Parcourt récursivement le sous-arbre droit en utilisant la même méthode.
     - Combine les résultats et retourne la liste complète.
     """
-    raise NotImplementedError
+    res = []
+    currentNode = racine
+
+    if currentNode is None:
+        return []
+
+    left = parcours_infixe(currentNode.left)
+
+    res.extend(left)
+    print("Left: ", left)
+    print("Res: ", res)
+
+    res.append(currentNode.value)
+    print("Current: ", currentNode.value)
+    print("Res: ", res)
+
+    right = parcours_infixe(currentNode.right)
+
+    res.extend(right)
+    print("Right: ", right)
+    print("Res: ", res)
+
+    return res
 
 
 def parcours_suffixe(racine: Optional[Node]) -> List[object]:
@@ -39,7 +75,27 @@ def parcours_suffixe(racine: Optional[Node]) -> List[object]:
     - Ajoute la valeur du nœud racine à la liste de résultat.
     - Combine les résultats et retourne la liste complète.
     """
-    raise NotImplementedError
+    res = []
+    currentNode = racine
+
+    if currentNode is None:
+        return []
+
+    left = parcours_suffixe(currentNode.left)
+    res.extend(left)
+    print("Left: ", left)
+    print("Res: ", res)
+
+    right = parcours_suffixe(currentNode.right)
+    res.extend(right)
+    print("Right: ", right)
+    print("Res: ", res)
+
+    res.append(currentNode.value)
+    print("Current: ", currentNode.value)
+    print("Res: ", res)
+
+    return res
 
 
 def parcours_largeur(racine: Optional[Node]) -> List[object]:
@@ -53,7 +109,29 @@ def parcours_largeur(racine: Optional[Node]) -> List[object]:
         - Ajouter les sous-arbres gauche et droit à la fin de la queue s'ils ne sont pas None.
     - Retourne la liste de résultat.
     """
-    raise NotImplementedError
+    queue = []
+    res = []
+    current = racine
+
+    if current is None:
+        return []
+
+    queue.append(current)
+
+    while len(queue):
+        print("Queue:", queue)
+        first: Node = queue[0]
+        queue.remove(first)
+
+        res.append(first.value)
+
+        if first.left:
+            queue.append(first.left)
+        if first.right:
+            queue.append(first.right)
+
+    print("Res:", res)
+    return res
 
 
 def parcours_dfs(racine: Optional[Node]) -> List[object]:
@@ -67,7 +145,25 @@ def parcours_dfs(racine: Optional[Node]) -> List[object]:
         - Ajouter les sous-arbres droit et gauche (dans cet ordre) à la pile si présents.
     - Retourne la liste de résultat.
     """
-    raise NotImplementedError
+    res = []
+    current = racine
+
+    if current is None:
+        return []
+
+    stack = [current]
+
+    while len(stack):
+        top: Node = stack.pop()
+
+        res.append(top.value)
+
+        if top.right:
+            stack.append(top.right)
+        if top.left:
+            stack.append(top.left)
+
+    return res
 
 
 def parcours_bfs(racine: Optional[Node]) -> List[object]:
@@ -81,4 +177,23 @@ def parcours_bfs(racine: Optional[Node]) -> List[object]:
         - Ajouter les sous-arbres gauche et droit (dans cet ordre) à la file s'ils ne sont pas None.
     - Retourne la liste de résultat.
     """
-    raise NotImplementedError
+    res = []
+    current = racine
+
+    if current is None:
+        return []
+
+    queue = [current]
+
+    while len(queue):
+        first: Node = queue[0]
+        queue.remove(first)
+
+        res.append(first.value)
+
+        if first.left:
+            queue.append(first.left)
+        if first.right:
+            queue.append(first.right)
+
+    return res
