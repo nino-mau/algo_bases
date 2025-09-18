@@ -102,9 +102,12 @@ def tri_shell(lst: list[int]) -> list[int]:
 
 
 def heapify(arr, n, i):
+    print(i)
     largest = i
     left = 2 * i + 1
     right = 2 * i + 2
+
+    print(arr)
 
     if left < n and arr[left] > arr[largest]:
         largest = left
@@ -113,8 +116,8 @@ def heapify(arr, n, i):
         largest = right
 
     if largest != i:
-        arr[i] = arr[largest]
-        arr[largest] = arr[i]
+        arr[i], arr[largest] = arr[largest], arr[i]
+        heapify(arr, n, largest)
 
 
 def tri_tas(lst: list[int]) -> list[int]:
@@ -132,26 +135,37 @@ def tri_tas(lst: list[int]) -> list[int]:
     n = len(lst)
     i = 0
 
-    while i < n:
-        largest = i
-        left = 2 * i + 1
-        right = 2 * i + 2
+    for i in range(n // 2 - 1, -1, -1):
+        heapify(temp, n, i)
 
-        if left < n and temp[left] > temp[largest]:
-            largest = left
-        else:
-            largest = i
+    for i in range(n - 1, 0, -1):
+        temp[0], temp[i] = temp[i], temp[0]
 
-        if right < n and temp[right] > temp[largest]:
-            largest = right
+        heapify(temp, i, 0)
 
-        if largest != i:
-            temp[i] = temp[largest]
-            temp[largest] = temp[i]
-        else:
-            break
+    return temp
 
-    print(temp)
+
+def partition(arr, start, end):
+    pivot = arr[end]
+
+    i = start - 1
+
+    for j in range(start, end):
+        if arr[j] <= pivot:
+            i += 1
+            arr[i], arr[j] = arr[j], arr[i]
+
+    arr[i + 1], arr[end] = arr[end], arr[i + 1]
+    return i + 1
+
+
+def quicksort(temp, start, end):
+    if start < end:
+        pivot = partition(temp, start, end)
+
+        quicksort(temp, start, pivot - 1)
+        quicksort(temp, pivot + 1, end)
 
 
 def tri_rapide(lst: list[int]) -> list[int]:
@@ -166,4 +180,9 @@ def tri_rapide(lst: list[int]) -> list[int]:
     5. Combiner les résultats de manière triée et inclure le pivot.
     6. Retourner la liste triée.
     """
-    raise NotImplementedError
+
+    localLst = lst
+
+    quicksort(localLst, 0, len(localLst) - 1)
+    print(localLst)
+    return localLst

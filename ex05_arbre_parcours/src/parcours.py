@@ -14,6 +14,7 @@ def parcours_prefixe(racine: Optional[Node]) -> List[object]:
     - Parcourt récursivement le sous-arbre droit en utilisant la même méthode.
     - Combine les résultats et retourne la liste complète.
     """
+
     raise NotImplementedError
 
 
@@ -81,4 +82,3 @@ def parcours_bfs(racine: Optional[Node]) -> List[object]:
     - Retourne la liste de résultat.
     """
     raise NotImplementedError
-
