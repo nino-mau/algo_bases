@@ -92,6 +92,35 @@ def render_player(player, tileSize, screen):
     )
 
 
+def draw_timer(start_time, screen, labyrinth_data, tileSize):
+    elapsed_time = pygame.time.get_ticks() - start_time
+    font = pygame.font.Font("freesansbold.ttf", 20)
+    text = font.render(
+        "time: " + str(elapsed_time // 1000) + "s", True, (255, 255, 255), (50, 50, 50)
+    )
+    textRect = text.get_rect()
+    textRect.center = (
+        labyrinth_data.width * tileSize
+        - ((labyrinth_data.width / 100 * 15) * tileSize),
+        12,
+    )
+    screen.blit(text, textRect)
+
+
+def draw_score(player, screen, labyrinth_data, tileSize):
+    font = pygame.font.Font("freesansbold.ttf", 20)
+    text = font.render(
+        "score: " + str(player.score), True, (255, 255, 255), (50, 50, 50)
+    )
+    textRect = text.get_rect()
+    textRect.center = (
+        labyrinth_data.width * tileSize
+        - ((labyrinth_data.width / 100 * 85) * tileSize),
+        12,
+    )
+    screen.blit(text, textRect)
+
+
 def draw_victory_screen(screen, labyrinth_data, tileSize):
     screen.fill((0, 0, 0))
     font = pygame.font.Font("freesansbold.ttf", 32)
@@ -128,6 +157,10 @@ def player_action_handler(event, player, game_state, labyrinth_data):
                 if (x, y + 1) not in labyrinth_data.tiles:
                     player.y += 1
 
+        # Handle scoring
+        if (x, y) in labyrinth_data.points:
+            player.score += 1
+
         # Handle victory
         if (x, y) == labyrinth_data.end:
             game_state.is_victory = True
@@ -135,7 +168,7 @@ def player_action_handler(event, player, game_state, labyrinth_data):
 
 def main():
     LABYRINTH_DATA_PATH = "./ex07_mini_projet/labyrinths/lab-small.json"
-    TILE_SIZE = 10
+    TILE_SIZE = 25
 
     class Labyrinth:
         def __init__(self, width, height, start, end, tiles, points):
@@ -159,14 +192,14 @@ def main():
             self.is_victory = True
 
     class Player:
-        def __init__(self, x, y):
+        def __init__(self, x, y, score):
             super(Player, self).__init__()
             self.x = x
             self.y = y
+            self.score = score
 
     # Create labyrinth instance with data from json
     labyrinth_data = load_labyrinth(LABYRINTH_DATA_PATH, Labyrinth)
-    print(labyrinth_data.tiles)
 
     # Create game instance
     game_state = Game(False, False, False)
@@ -180,10 +213,11 @@ def main():
     )
 
     # Create player instance
-    player = Player(labyrinth_data.start[0], labyrinth_data.start[1])
+    player = Player(labyrinth_data.start[0], labyrinth_data.start[1], 0)
 
     # Game loop
     game_state.is_running = True
+    start_time = pygame.time.get_ticks()
     while game_state.is_running:
         # Handle victory
         if game_state.is_victory:
@@ -208,6 +242,11 @@ def main():
 
             # Render player
             render_player(player, TILE_SIZE, screen)
+
+            # Render timer
+            draw_timer(start_time, screen, labyrinth_data, TILE_SIZE)
+
+            draw_score(player, screen, labyrinth_data, TILE_SIZE)
 
         # Update display
         pygame.display.flip()
